@@ -49,9 +49,9 @@ commands:
       - run:
           name: Install dependencies
           command: |
-            yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+            yarn install --verbose --frozen-lockfile --cache-folder ~/.cache/yarn
             if [ $? -ne 0 ]; then
-              yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+              yarn install --verbose --frozen-lockfile --cache-folder ~/.cache/yarn
             fi
       - save_cache:
           name: Save yarn cache
