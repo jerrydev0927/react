@@ -363,3 +363,25 @@ yarn start
 ```
 
 To test package changes, refer to the [`react-devtools-shell` README](https://github.com/facebook/react/blob/main/packages/react-devtools-shell/README.md).
+
+## Running e2e tests
+
+### Prerequisites
+
+1. Chrome installed locally (run `npx playwright install chrome --with-deps`)
+1. Running build (`yarn start`)
+
+### Running
+
+
+```sh
+`yarn test:e2e`
+```
+
+This will use your local installation of Chrome.
+To use the same version as CI, you need to [have Docker installed](https://docs.docker.com/get-docker/).
+
+```sh
+$ docker compose -f packages/react-devtools-inline/docker-compose.yml up --detach
+$ docker exec react-devtools-inline-test-runner yarn test:e2e
+```

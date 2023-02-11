@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  test-runner:
+    build:
+      context: ../../
+      dockerfile: ./packages/react-devtools-inline/Dockerfile
+    container_name: "react-devtools-e2e-test-runner"
+    network_mode: "host"
+    tty: true
