@@ -383,5 +383,18 @@ To use the same version as CI, you need to [have Docker installed](https://docs.
 
 ```sh
 $ docker compose -f packages/react-devtools-inline/docker-compose.yml up --detach
-$ docker exec react-devtools-inline-test-runner yarn test:e2e
+$ docker exec react-devtools-e2e-test-runner yarn test:e2e
+```
+
+WARNING: If you change the test code after you created the Docker container, you need to either copy the tests to the running container (fast but dangerous):
+
+```sh
+# assuming you're in the repository root
+$ docker cp packages/react-devtools-inline/__tests__ react-devtools-e2e-test-runner:/tmp/react/packages/react-devtools-inline/
+```
+
+or rebuild the container entirely (slow but safe):
+
+```sh
+docker compose -f packages/react-devtools-inline/docker-compose.yml up --build --detach
 ```
