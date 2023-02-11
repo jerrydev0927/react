@@ -215,18 +215,15 @@ jobs:
           path: ./build/devtools.tgz
 
   run_devtools_e2e_tests:
-    docker: *docker
+    docker:
+      # Make sure used Dockerfiles in this repository reference the same version
+      - image: mcr.microsoft.com/playwright:v1.16.0-focal
     environment: *environment
     steps:
       - checkout
       - attach_workspace:
           at: .
       - setup_node_modules
-      - run:
-          name: Playwright install deps
-          command: |
-            npx playwright install
-            sudo npx playwright install-deps
       - run:
           environment:
             RELEASE_CHANNEL: experimental
